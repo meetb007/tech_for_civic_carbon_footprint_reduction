@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Route Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+    <div>
+        <label class="destination-label">
+            Enter the Destination:
+            <input type="text" class="destination" name="destination" value="">
+        </label>
+
+        <button type="submit" class="find-path-button">Find Path</button>
+    </div>
+
+    <div id="floating-panel">
+        <b>Mode of Travel: </b>
+        <select id="mode">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+          <option value="BICYCLING">Bicycling</option>
+          <option value="TRANSIT">Transit</option>
+        </select>
+    </div>
+    <div id="map"></div>
+
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQXVrvC589DoznDhnqDpp_Q3NsOQPWIco&callback=initMap&v=weekly"
+      defer></script>
+</body>
+
+</html>

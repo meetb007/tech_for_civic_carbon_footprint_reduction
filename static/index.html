@@ -14,10 +14,10 @@
     <div>
         <label class="destination-label">
             Enter the Destination:
-            <input type="text" class="destination" name="destination" value="">
+            <input type="text" id="end" name="destination" value="">
         </label>
 
-        <button type="submit" class="find-path-button">Find Path</button>
+        <button type="submit" id="find-path-button" onclick="initMap()">Find Path</button>
     </div>
 
     <div id="floating-panel">
@@ -30,6 +30,7 @@
         </select>
     </div>
     <div id="map"></div>
+    <h1 id="total"></h1>
 
 
     <script

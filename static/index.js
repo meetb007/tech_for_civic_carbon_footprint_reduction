@@ -115,7 +115,7 @@ function calculateCredits(mode, miles) {
             break;
     }
 
-    return credits;
+    return credits.toFixed(2);
 }
 
 function calculateCO2Emission(mode, miles) {
@@ -135,7 +135,7 @@ function calculateCO2Emission(mode, miles) {
           break;
   }
 
-  return credits;
+  return credits.toFixed(2);
 }
 
 // Add event listener to the button

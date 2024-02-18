@@ -15,4 +15,7 @@ The journey at PlanetPass is also a friendly challenge. Watch your points grow w
 Choose *PlanetPass*, where every trip counts towards a more sustainable future, fostering environmental stewardship, community engagement, and a commitment to the values of equality and quality of life. Embark on a path that leads to a greener, fairer world with every swipe on your screen.
 
 ## Demo
-<iframe width="560" height="315" src="media/video.mp4" frameborder="0" allowfullscreen></iframe>
+<video width="560" height="315" controls>
+  <source src="media/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

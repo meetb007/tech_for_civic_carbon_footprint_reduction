@@ -27,8 +27,8 @@ function initMap() {
     }
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: { lat: 37.0902, lng: -95.7129 }, // USA
+      zoom: 10,
+      center: { lat: 42.3601, lng: -71.0589 }, // Boston
     });
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
@@ -86,9 +86,12 @@ function displayRoute(destination, service, display) {
 
     console.log(selectedMode);
 
-    const credits = calculateCredits(selectedMode, total)
-    document.getElementById("total").innerHTML = "Total Distance: "+ total + " mi";
-    document.getElementById("credits").innerHTML = "You will get " + credits + " credits.";
+    const credits = calculateCredits(selectedMode, total);
+    const carbonEmission = calculateCO2Emission(selectedMode, total);
+    document.getElementById("total").innerHTML = "Total Distance is <u>"+ total + " mi</u>";
+    document.getElementById("credits").innerHTML = "You will earn <u>" + credits + " credits</u>";
+    document.getElementById("emission").innerHTML = "<u>" + carbonEmission + " KgCO2</u> of Carbon will be Emitted";
+    
   }
 
 // Function to be called when the button is clicked
@@ -113,6 +116,26 @@ function calculateCredits(mode, miles) {
     }
 
     return credits;
+}
+
+function calculateCO2Emission(mode, miles) {
+  let credits = 0;
+  switch(mode) {
+      case "DRIVING":
+          credits = miles*0.44;
+          break;
+      case "BICYCLING":
+          credits = miles*0.008;
+          break;
+      case "WALKING":
+          credits = miles*0.019;
+          break;
+      case("TRANSIT"):
+          credits = miles*0.1;
+          break;
+  }
+
+  return credits;
 }
 
 // Add event listener to the button

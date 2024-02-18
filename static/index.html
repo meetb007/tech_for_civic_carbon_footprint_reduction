@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Maps Route Finder</title>
+    <title>PlanetPass</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="./index.js"></script>
@@ -12,26 +12,36 @@
 
 <body>
     <div>
-        <label class="destination-label">
-            Enter the Destination:
-            <input type="text" id="end" name="destination" value="">
-        </label>
-
-        <button type="submit" id="find-path-button" onclick="initMap()">Find Path</button>
+        <div class="heading">
+            <div>
+                <p>A step towards</p>
+                <p>Sustainability</p>
+            </div>
+            <button class="location-button">Turn on location</button>
+        </div>
+        <div class="actions">
+            <input type="text" id="end" name="destination" value="" placeholder="Where to?">
+            <div class="mode-selection">
+                Mode of Travel:
+                <select id="mode">
+                  <option value="DRIVING">Driving</option>
+                  <option value="WALKING">Walking</option>
+                  <option value="BICYCLING">Bicycling</option>
+                  <option value="TRANSIT">Transit</option>
+                </select>
+            </div>
+            <div class="button">
+                <button type="submit" id="find-path-button" onclick="initMap()">Find Path</button>
+            </div>
+        </div>
     </div>
-
-    <div id="floating-panel">
-        <b>Mode of Travel: </b>
-        <select id="mode">
-          <option value="DRIVING">Driving</option>
-          <option value="WALKING">Walking</option>
-          <option value="BICYCLING">Bicycling</option>
-          <option value="TRANSIT">Transit</option>
-        </select>
-    </div>
+    
     <div id="map"></div>
-    <h1 id="total"></h1>
-    <h1 id="credits"></h1>
+    <div class="footer">
+        <p id="total"></p>
+        <p id="emission"></p>
+        <p id="credits"></p>
+    </div>
 
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQXVrvC589DoznDhnqDpp_Q3NsOQPWIco&callback=initMap&v=weekly"

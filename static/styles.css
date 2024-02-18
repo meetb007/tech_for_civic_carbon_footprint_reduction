@@ -1,4 +1,73 @@
 #map {
-    height: 400px;
-    width: 100%;
-  }
+  height: 400px;
+  width: 90%;
+  margin: 1rem;
+}
+
+.heading {
+  font-size: x-large;
+  font-weight: bolder;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.location-button {
+  height: 3rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  background-color: #000000;
+  color: #EDF6FF;
+  font-size: large;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+p {
+  margin: 0.5rem;
+}
+
+body {
+  background-color: #70B4E5;
+}
+
+.mode-selection {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#mode {
+  font-size: large;
+  font-weight: 500;
+}
+
+.actions{
+  font-size: large;
+  font-weight: 500;
+  text-align: center;
+}
+
+#end {
+  font-size: large;
+  font-weight: 500;
+  text-align: center;
+  background-color: #000000;
+  color: #979797;
+  height: 2rem;
+}
+
+#find-path-button {
+  font-size: x-large;
+  width: 12rem;
+  background-color: #000000;
+  color: #EDF6FF;
+}
+
+.footer {
+  text-align: center;
+  font-size: large;
+  font-weight: bolder;
+  border: solid #000000 3px;
+  border-radius: 20px;
+  padding: 10px;
+}

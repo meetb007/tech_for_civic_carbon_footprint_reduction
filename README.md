@@ -16,6 +16,6 @@ Choose *PlanetPass*, where every trip counts towards a more sustainable future, 
 
 ## Demo
 <video width="560" height="315" controls>
-  <source src="./media/video.mp4" type="video/mp4">
+  <source src="https://drive.google.com/file/d/1-Vs1WgxdfiTW1dF4hePcPDN0kxjbTDRp/view?usp=drive_link" type="video/mp4">
   Your browser does not support the video tag.
 </video>

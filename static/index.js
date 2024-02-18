@@ -1,8 +1,11 @@
+let latitude = 0;
+let longitude = 0;
+let selectedMode;
+let end;
+
 function initMap() {
-
-    let latitude;
-    let longitude;
-
+    selectedMode = document.getElementById('mode').value;
+    end = document.getElementById('end').value;
     // Check if Geolocation is supported by the browser
     if ("geolocation" in navigator) {
         // Request the current position of the user
@@ -25,7 +28,7 @@ function initMap() {
 
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,
-      center: { lat: 37.0902, lng: -95.7129 }, // Australia.
+      center: { lat: 37.0902, lng: -95.7129 }, // USA
     });
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
@@ -38,11 +41,9 @@ function initMap() {
       const directions = directionsRenderer.getDirections();
   
       if (directions) {
-        computeTotalDistance(directions);
+        computeTotalDistance(directions, );
       }
     });
-
-    var end = document.getElementById('end').value;
 
     displayRoute(end,
       directionsService,
@@ -50,16 +51,15 @@ function initMap() {
     );
   }
   
-  function displayRoute(destination, service, display) {
+function displayRoute(destination, service, display) {
 
-    var selectedMode = document.getElementById('mode').value;
+    if (destination === "") return;
 
     service
       .route({
         origin: { lat: latitude, lng: longitude},
         destination: destination,
         travelMode: google.maps.TravelMode[selectedMode],
-        avoidTolls: true,
       })
       .then((result) => {
         display.setDirections(result);
@@ -67,7 +67,7 @@ function initMap() {
       .catch((e) => {
         alert("Could not display directions due to: " + e);
       });
-  }
+}
   
   function computeTotalDistance(result) {
     let total = 0;
@@ -81,8 +81,14 @@ function initMap() {
       total += myroute.legs[i].distance.value;
     }
   
-    total = total / 1000;
-    document.getElementById("total").innerHTML = total + " km";
+    total = total * 0.62 / 1000;
+    total = total.toFixed(2);
+
+    console.log(selectedMode);
+
+    const credits = calculateCredits(selectedMode, total)
+    document.getElementById("total").innerHTML = "Total Distance: "+ total + " mi";
+    document.getElementById("credits").innerHTML = "You will get " + credits + " credits.";
   }
 
 // Function to be called when the button is clicked
@@ -91,8 +97,25 @@ function onButtonClick() {
     initMap();
 }
 
+function calculateCredits(mode, miles) {
+    let credits = 0;
+    switch(mode) {
+        case "DRIVING":
+            credits = miles*1;
+            break;
+        case "BICYCLING":
+        case "WALKING":
+            credits = miles*10;
+            break;
+        case("TRANSIT"):
+            credits = miles*5;
+            break;
+    }
+
+    return credits;
+}
+
 // Add event listener to the button
 document.getElementById('find-path-button').addEventListener('click', onButtonClick);
 
-  
-  window.initMap = initMap;
+window.initMap = initMap;
